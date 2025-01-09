@@ -112,7 +112,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(174, 326);
+            this.panel2.Size = new System.Drawing.Size(174, 395);
             this.panel2.TabIndex = 15;
             // 
             // button3
@@ -167,7 +167,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "adminView";
-            this.Size = new System.Drawing.Size(1219, 326);
+            this.Size = new System.Drawing.Size(1219, 395);
             this.Load += new System.EventHandler(this.adminView_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

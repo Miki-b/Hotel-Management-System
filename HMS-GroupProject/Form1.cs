@@ -12,8 +12,7 @@ namespace HMS_GroupProject
         public HomeUserControl uchome = new HomeUserControl();
         public RoomUserControl ucroom = new RoomUserControl();
         private SqlConnection connection;
-        private string connectionString = "Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;";
-
+        private string connectionString = "Data Source=DESKTOP-2RI98PE\\SQLEXPRESS;Initial Catalog=Hotel_Managment;Integrated Security=True;Encrypt=False;";
         public Form1()
         {
             InitializeComponent();

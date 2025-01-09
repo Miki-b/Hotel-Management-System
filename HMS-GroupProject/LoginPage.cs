@@ -22,8 +22,7 @@ namespace HMS_GroupProject
             InitializeComponent();
             mainForm = form;
         }
-        private string connectionString = "Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;";
-
+        private string connectionString = "Data Source=DESKTOP-2RI98PE\\SQLEXPRESS;Initial Catalog=Hotel_Managment;Integrated Security=True;Encrypt=False";
         private void button1_Click(object sender, EventArgs e)
         {
             

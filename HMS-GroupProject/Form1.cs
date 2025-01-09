@@ -11,6 +11,10 @@ namespace HMS_GroupProject
         public BookingListUserControl ucbooking = new BookingListUserControl();
         public HomeUserControl uchome = new HomeUserControl();
         public RoomUserControl ucroom = new RoomUserControl();
+        public GuestList gl = new GuestList();
+        public Services srvc = new Services();
+        public GuestRegUserCo gReg = new GuestRegUserCo();
+        public RoomViewUserCo rview = new RoomViewUserCo();
         private SqlConnection connection;
         private string connectionString = "Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;";
 

@@ -185,6 +185,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Credit card",
+            "Cash",
             "Paypal"});
             this.comboBox1.Location = new System.Drawing.Point(27, 645);
             this.comboBox1.Name = "comboBox1";
@@ -480,7 +481,8 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(662, 82);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(318, 329);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(424, 405);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Booking Summary";
@@ -548,42 +550,48 @@
             // 
             // textBox19
             // 
-            this.textBox19.Location = new System.Drawing.Point(159, 292);
+            this.textBox19.Location = new System.Drawing.Point(212, 359);
+            this.textBox19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox19.Name = "textBox19";
             this.textBox19.Size = new System.Drawing.Size(100, 22);
             this.textBox19.TabIndex = 12;
             // 
             // textBox18
             // 
-            this.textBox18.Location = new System.Drawing.Point(159, 237);
+            this.textBox18.Location = new System.Drawing.Point(212, 292);
+            this.textBox18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox18.Name = "textBox18";
             this.textBox18.Size = new System.Drawing.Size(100, 22);
             this.textBox18.TabIndex = 11;
             // 
             // textBox17
             // 
-            this.textBox17.Location = new System.Drawing.Point(159, 192);
+            this.textBox17.Location = new System.Drawing.Point(212, 236);
+            this.textBox17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(100, 22);
             this.textBox17.TabIndex = 10;
             // 
             // textBox16
             // 
-            this.textBox16.Location = new System.Drawing.Point(159, 144);
+            this.textBox16.Location = new System.Drawing.Point(212, 177);
+            this.textBox16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(100, 22);
             this.textBox16.TabIndex = 9;
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(159, 89);
+            this.textBox15.Location = new System.Drawing.Point(212, 110);
+            this.textBox15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(100, 22);
             this.textBox15.TabIndex = 8;
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(159, 33);
+            this.textBox14.Location = new System.Drawing.Point(212, 41);
+            this.textBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(100, 22);
             this.textBox14.TabIndex = 7;
@@ -596,7 +604,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "BookingListUserControl";
-            this.Size = new System.Drawing.Size(798, 416);
+            this.Size = new System.Drawing.Size(1087, 533);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

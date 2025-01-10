@@ -16,5 +16,10 @@ namespace HMS_GroupProject
         {
             InitializeComponent();
         }
+
+        private void RoomViewUserCo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

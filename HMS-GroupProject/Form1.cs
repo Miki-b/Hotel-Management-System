@@ -18,6 +18,7 @@ namespace HMS_GroupProject
         //public GuestRegUserCo gReg = new GuestRegUserCo();
         //public RoomViewUserCo rview = new RoomViewUserCo();
         private SqlConnection connection;
+        private string connectionString = "Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;";
 
         public Form1()
         {
@@ -27,10 +28,13 @@ namespace HMS_GroupProject
             //ToggleButtons(false);
 
             // Load the login page
-            LoginPage loginPage = new LoginPage(this);
-            this.Controls.Add(loginPage);
-            loginPage.Visible = true;
-            loginPage.Dock = DockStyle.Fill;
+            //LoginPage loginPage = new LoginPage(this);
+            adminView view1 = new adminView();
+            this.Controls.Add(view1);
+            view1.Visible = true;
+            view1.Dock = DockStyle.Fill;
+
+
 
         }
 
@@ -44,7 +48,7 @@ namespace HMS_GroupProject
             {
                 connection = new SqlConnection(connectionString);
                 connection.Open();
-                MessageBox.Show("Connected to Database!");
+                //MessageBox.Show("Connected to Database!");
 
             }
             catch (Exception ex)

@@ -206,8 +206,15 @@ namespace HMS_GroupProject
 
         private void button2_Click(object sender, EventArgs e)
         {
-            adminView adminView = new adminView();
-            adminView.BOOKINGLIST();
+            BookingListView bookingListView=new BookingListView(connectionString);
+            var parentContainer = this.Parent;
+            if (parentContainer != null)
+            {
+                parentContainer.Controls.Clear(); // Remove RoomUserControl from the container
+                bookingListView.Dock = DockStyle.Fill;   // Make ViewRoom fill the parent container
+                parentContainer.Controls.Add(bookingListView); // Add ViewRoom to the container
+            }
+
         }
     }
 }

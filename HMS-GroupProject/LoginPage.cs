@@ -116,7 +116,7 @@ namespace HMS_GroupProject
                             {
                                 case "Guest":
                                     MessageBox.Show("Welcome Guest! Redirecting to Guest Page...", "Login Successful");
-                                    
+                                    //mainForm.GuestView();
                                     break;
                                 case "Employee":
                                     MessageBox.Show("Welcome Employee! Redirecting to Employee Page...", "Login Successful");

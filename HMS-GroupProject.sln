@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DE939E00-B305-4600-84EF-E7C9F40AE57C}"
 	ProjectSection(SolutionItems) = preProject
 		bckPic1.jpg = bckPic1.jpg
+		..\..\..\..\3D Objects\Class\guest-view.cs = ..\..\..\..\3D Objects\Class\guest-view.cs
 		mainCont.jpg = mainCont.jpg
 	EndProjectSection
 EndProject

@@ -11,7 +11,7 @@ namespace HMS_GroupProject
         //private string connectionString = "Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;";
         public GuestUserControl ucguest = new GuestUserControl();
         //public BookingListUserControl ucbooking = new BookingListUserControl();
-        public HomeUserControl uchome = new HomeUserControl();
+        public HomeUserControl uchome;
         public RoomUserControl ucroom = new RoomUserControl();
        // public BookingListView gl = new BookingListView();
         //public Services srvc = new Services();
@@ -64,6 +64,13 @@ namespace HMS_GroupProject
             this.Controls.Add(admin);
             admin.Dock = DockStyle.Fill;
         }
+        //public void GuestView()
+        ////{
+        ////    this.Controls.Clear();
+        ////    //var guest = new guest_view();
+        ////    this.Controls.Add(guest);
+        ////    guest.Dock = DockStyle.Fill;
+        //}
         //public void ToggleButtons(bool enable)
         //{
         //    homeButton.Enabled = enable;

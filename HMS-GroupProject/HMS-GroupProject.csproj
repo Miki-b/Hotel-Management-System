@@ -120,6 +120,12 @@
     <Compile Include="BookingView.Designer.cs">
       <DependentUpon>BookingView.cs</DependentUpon>
     </Compile>
+    <Compile Include="GuestView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GuestView.Designer.cs">
+      <DependentUpon>GuestView.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BookingView.resx">
       <DependentUpon>BookingView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuestView.resx">
+      <DependentUpon>GuestView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>

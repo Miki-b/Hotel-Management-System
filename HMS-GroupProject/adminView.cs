@@ -16,14 +16,14 @@ namespace HMS_GroupProject
     {
         private string connectionString = "Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;";
         public GuestUserControl ucguest = new GuestUserControl();
-        //public BookingListUserControl ucbooking;
-        public HomeUserControl uchome = new HomeUserControl();
+        public BookingListUserControl ucbooking;
+        public HomeUserControl uchome;
         public RoomUserControl ucroom = new RoomUserControl();
         //public BookingListView view;
         public adminView()
         {
             InitializeComponent();
-            //ucbooking = new BookingListUserControl(connectionString);
+            ucbooking = new BookingListUserControl(connectionString);
            // view = new BookingListView(connectionString);
             panelMain.Controls.Clear();
             //panelMain.Controls.Add(uchome);
@@ -113,6 +113,7 @@ namespace HMS_GroupProject
 
         private void homeButton_Click(object sender, EventArgs e)
         {
+            uchome = new HomeUserControl(connectionString);
             panelMain.Controls.Clear();
             panelMain.Controls.Add(uchome);
             uchome.Dock = DockStyle.Fill;
@@ -135,12 +136,12 @@ namespace HMS_GroupProject
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            //panelMain.Controls.Clear();
-            //panelMain.Controls.Add(ucbooking);
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(ucbooking);
             //panelMain.Controls.Add(view);
             //ucbooking.Visible = true;
             //view.Visible = false;
-            //ucbooking.Dock = DockStyle.Fill;
+            ucbooking.Dock = DockStyle.Fill;
             
         }
 

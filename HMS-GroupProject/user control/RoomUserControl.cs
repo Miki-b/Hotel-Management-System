@@ -12,8 +12,9 @@ namespace HMS_GroupProject.user_control
         public RoomUserControl()
         {
             InitializeComponent();
+           // button2.Click += button2_Click;
         }
-
+        //ViewRoom view=new ViewRoom();
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -114,5 +115,30 @@ namespace HMS_GroupProject.user_control
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Create an instance of ViewRoom
+            ViewRoom viewRoom = new ViewRoom("Data Source=DESKTOP-2RI98PE\\SQLEXPRESS;Initial Catalog=Hotel_Managment;Integrated Security=True;Encrypt=False;");
+
+            // Get the parent container (e.g., Panel) where RoomUserControl is hosted
+            var parentContainer = this.Parent;
+            if (parentContainer != null)
+            {
+                parentContainer.Controls.Clear(); // Remove RoomUserControl from the container
+                viewRoom.Dock = DockStyle.Fill;   // Make ViewRoom fill the parent container
+                parentContainer.Controls.Add(viewRoom); // Add ViewRoom to the container
+            }
+        }
+
+        private void RoomUserControl_Load(object sender, EventArgs e)
+        {
+
+           
+
+        }
+
+       
+
     }
 }
+

@@ -35,6 +35,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -48,16 +50,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.RoomNumber = new System.Windows.Forms.TextBox();
             this.capacity = new System.Windows.Forms.ComboBox();
             this.RoomStatus = new System.Windows.Forms.ComboBox();
+            this.FOStatus = new System.Windows.Forms.ComboBox();
             this.type = new System.Windows.Forms.ComboBox();
             this.price = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.FOStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -129,6 +130,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.checkBox8);
             this.panel1.Controls.Add(this.checkBox7);
@@ -153,11 +155,31 @@
             this.panel1.Controls.Add(this.price);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(2, 163);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(797, 267);
+            this.panel1.Size = new System.Drawing.Size(824, 267);
             this.panel1.TabIndex = 12;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(637, 204);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 89;
+            this.button2.Text = "View Room";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(498, 204);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 88;
+            this.button1.Text = "ADD";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkBox8
             // 
@@ -298,6 +320,16 @@
             this.label9.TabIndex = 74;
             this.label9.Text = "Room Status";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(284, 42);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 13);
+            this.label7.TabIndex = 72;
+            this.label7.Text = "FO Status";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -348,6 +380,21 @@
             this.RoomStatus.Size = new System.Drawing.Size(139, 23);
             this.RoomStatus.TabIndex = 66;
             // 
+            // FOStatus
+            // 
+            this.FOStatus.BackColor = System.Drawing.SystemColors.Menu;
+            this.FOStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FOStatus.FormattingEnabled = true;
+            this.FOStatus.Items.AddRange(new object[] {
+            "Vacant",
+            "Occupied"});
+            this.FOStatus.Location = new System.Drawing.Point(199, 57);
+            this.FOStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.FOStatus.MinimumSize = new System.Drawing.Size(7, 0);
+            this.FOStatus.Name = "FOStatus";
+            this.FOStatus.Size = new System.Drawing.Size(139, 23);
+            this.FOStatus.TabIndex = 65;
+            // 
             // type
             // 
             this.type.BackColor = System.Drawing.SystemColors.Menu;
@@ -388,41 +435,6 @@
             this.label2.TabIndex = 58;
             this.label2.Text = "Room Details";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(580, 256);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 88;
-            this.button1.Text = "ADD";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(284, 42);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 13);
-            this.label7.TabIndex = 72;
-            this.label7.Text = "FO Status";
-            // 
-            // FOStatus
-            // 
-            this.FOStatus.BackColor = System.Drawing.SystemColors.Menu;
-            this.FOStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FOStatus.FormattingEnabled = true;
-            this.FOStatus.Items.AddRange(new object[] {
-            "Vacant",
-            "Occupied"});
-            this.FOStatus.Location = new System.Drawing.Point(199, 57);
-            this.FOStatus.Margin = new System.Windows.Forms.Padding(2);
-            this.FOStatus.MinimumSize = new System.Drawing.Size(7, 0);
-            this.FOStatus.Name = "FOStatus";
-            this.FOStatus.Size = new System.Drawing.Size(139, 23);
-            this.FOStatus.TabIndex = 65;
-            // 
             // RoomUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,9 +445,10 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RoomUserControl";
-            this.Size = new System.Drawing.Size(815, 462);
+            this.Size = new System.Drawing.Size(998, 462);
+            this.Load += new System.EventHandler(this.RoomUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -478,5 +491,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox FOStatus;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -28,11 +28,11 @@ namespace HMS_GroupProject
             //ToggleButtons(false);
 
             // Load the login page
-            //LoginPage loginPage = new LoginPage(this);
-            adminView view1 = new adminView();
-            this.Controls.Add(view1);
-            view1.Visible = true;
-            view1.Dock = DockStyle.Fill;
+            LoginPage loginPage = new LoginPage(this);
+            //adminView view1 = new adminView();
+            this.Controls.Add(loginPage);
+            loginPage.Visible = true;
+            loginPage.Dock = DockStyle.Fill;
 
 
 

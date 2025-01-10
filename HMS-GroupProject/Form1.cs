@@ -32,6 +32,8 @@ namespace HMS_GroupProject
             view1.Visible = true;
             view1.Dock = DockStyle.Fill;
 
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,7 +46,7 @@ namespace HMS_GroupProject
             {
                 connection = new SqlConnection(connectionString);
                 connection.Open();
-                MessageBox.Show("Connected to Database!");
+                //MessageBox.Show("Connected to Database!");
 
             }
             catch (Exception ex)

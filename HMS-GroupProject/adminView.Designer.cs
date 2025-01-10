@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminView));
             this.panelMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.HMS = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.UserName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -47,18 +47,18 @@
             // 
             // panelMain
             // 
-            this.panelMain.Location = new System.Drawing.Point(240, 79);
+            this.panelMain.Location = new System.Drawing.Point(232, 83);
             this.panelMain.Margin = new System.Windows.Forms.Padding(4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1122, 550);
+            this.panelMain.Size = new System.Drawing.Size(1134, 550);
             this.panelMain.TabIndex = 16;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.UserName);
+            this.panel1.Controls.Add(this.HMS);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(232, 0);
@@ -67,46 +67,47 @@
             this.panel1.Size = new System.Drawing.Size(1134, 81);
             this.panel1.TabIndex = 14;
             // 
-            // label6
+            // HMS
             // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 24);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.MaximumSize = new System.Drawing.Size(667, 271);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(173, 37);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "HMS";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.HMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HMS.Location = new System.Drawing.Point(8, 14);
+            this.HMS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.HMS.MaximumSize = new System.Drawing.Size(667, 271);
+            this.HMS.Name = "HMS";
+            this.HMS.Size = new System.Drawing.Size(173, 37);
+            this.HMS.TabIndex = 4;
+            this.HMS.Text = "HMS";
+            this.HMS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(287, 34);
+            this.textBox1.Location = new System.Drawing.Point(251, 14);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(271, 22);
+            this.textBox1.Size = new System.Drawing.Size(329, 47);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Search here...";
             // 
-            // label1
+            // UserName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(979, 24);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "User Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.UserName.AutoSize = true;
+            this.UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserName.Location = new System.Drawing.Point(913, 24);
+            this.UserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.UserName.Name = "UserName";
+            this.UserName.Size = new System.Drawing.Size(88, 17);
+            this.UserName.TabIndex = 0;
+            this.UserName.Text = "User Name";
+            this.UserName.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(867, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(811, 9);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(104, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(104, 62);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -192,9 +193,9 @@
 
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label HMS;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label UserName;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;

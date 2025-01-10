@@ -151,6 +151,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GuestRegUserCo";
             this.Size = new System.Drawing.Size(1195, 459);
+            this.Load += new System.EventHandler(this.GuestRegUserCo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

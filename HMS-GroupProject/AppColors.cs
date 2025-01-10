@@ -12,7 +12,7 @@ namespace HMS_GroupProject
 
     }
 
-   /* public static class AppColorss//this is the start to customize the whole thing...ur welcome:)
+    public static class AppColorss//this is the start to customize the whole thing...ur welcome:)
     {
         public static Color DarkGreen = ColorTranslator.FromHtml("#132a13ff");
         public static Color HunterGreen = ColorTranslator.FromHtml("#31572cff");
@@ -21,5 +21,5 @@ namespace HMS_GroupProject
         public static Color Mindaro = ColorTranslator.FromHtml("#ecf39eff");
         public static Color TextColor = Color.Black; // Or a contrasting color
         public static Color BackgroundColor = Color.WhiteSmoke;
-    }*/
+    }
 }

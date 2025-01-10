@@ -413,7 +413,7 @@
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "GuestList";
+            //this.Name = "GuestList";
             this.Size = new System.Drawing.Size(934, 395);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

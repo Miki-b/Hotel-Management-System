@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HMS_GroupProject
 {
-    public partial class Room : Form
+    public partial class BookingView : UserControl
     {
-        public Room()
+        public BookingView()
         {
             InitializeComponent();
         }

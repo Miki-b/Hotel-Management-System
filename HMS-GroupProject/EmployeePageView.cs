@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HMS_GroupProject
 {
-    public partial class Message : Form
+    public partial class UserControl1 : UserControl
     {
-        public Message()
+        public UserControl1()
         {
             InitializeComponent();
         }

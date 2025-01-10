@@ -23,7 +23,7 @@ namespace HMS_GroupProject
             mainForm = form;
             this.BackColor = Color.FromArgb(0x8B, 0x9F, 0xCA); // Light blue color from your palette
         }
-        private string connectionString = "Data Source=DESKTOP-B392QTM\\SQLEXPRESS;Initial Catalog=Hotel_Managment;Integrated Security=True;";
+        private string connectionString = "Data Source=DESKTOP-2RI98PE\\SQLEXPRESS;Initial Catalog=Hotel_Managment;Integrated Security=True;Encrypt=False";
 
         private void button1_Click(object sender, EventArgs e)
         {

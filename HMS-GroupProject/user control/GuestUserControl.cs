@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace HMS_GroupProject
 {
@@ -23,31 +25,31 @@ namespace HMS_GroupProject
             this.BackColor = Color.FromArgb(0x1A, 0x21, 0x37); // Darker gray background
 
             // Style Labels
-            StyleLabel(label1);
-            StyleLabel(label2);
-            StyleLabel(label3);
-            StyleLabel(label4);
-            StyleLabel(label5);
-            StyleLabel(label6);
-            StyleLabel(label7);
-            StyleLabel(label8);
+          //  StyleLabel(label1);
+          //  StyleLabel(label2);
+          //  StyleLabel(label3);
+          //  StyleLabel(label4);
+            StyleLabel(label9);
+            StyleLabel(label10);
+            StyleLabel(label12);
+            StyleLabel(label13);
 
             // Style TextBoxes
-            StyleTextBox(textBox1);
-            StyleTextBox(textBox2);
-            StyleTextBox(textBox3);
-            StyleTextBox(textBox4);
-            StyleTextBox(textBox5);
-            StyleTextBox(textBox6);
+           // StyleTextBox(textBox1);
+           // StyleTextBox(textBox2);
             StyleTextBox(textBox7);
+            StyleTextBox(textBox8);
+            StyleTextBox(textBox9);
+            StyleTextBox(textBox10);
+            //StyleTextBox(textBox7);
 
             // Style Buttons
             StyleButton(button1);
-            StyleButton(button2);
+           // StyleButton(button2);
 
             // Style PictureBoxes
-            StylePictureBox(pictureBox1);
-            StylePictureBox(pictureBox2);
+          //  StylePictureBox(pictureBox1);
+           // StylePictureBox(pictureBox2);
         }
 
         private void StyleLabel(Label label)
@@ -84,5 +86,69 @@ namespace HMS_GroupProject
         {
 
         }
+
+ 
+private void button1_Click(object sender, EventArgs e)
+    {
+        // Capture input values from textboxes
+        string name = textBox7.Text.Trim();
+        string contact = textBox9.Text.Trim();
+        string email = textBox8.Text.Trim();
+        string address = textBox10.Text.Trim();
+
+        // Input validation
+        if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(contact) || string.IsNullOrEmpty(email))
+        {
+            MessageBox.Show("Name, Contact, and Email fields are required.");
+            return;
+        }
+
+        // SQL query to insert data into the Guest table
+        string query = "INSERT INTO Guest (Name, Contact, Email, Address) VALUES (@Name, @Contact, @Email, @Address)";
+
+        try
+        {
+            using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-2RI98PE\\SQLEXPRESS;Initial Catalog=Hotel_Managment;Integrated Security=True;Encrypt=False"))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+
+                // Add parameters to prevent SQL injection
+                command.Parameters.AddWithValue("@Name", name);
+                command.Parameters.AddWithValue("@Contact", contact);
+                command.Parameters.AddWithValue("@Email", email);
+                command.Parameters.AddWithValue("@Address", string.IsNullOrEmpty(address) ? DBNull.Value : (object)address);
+
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Guest registered successfully!");
+                    ClearInputFields(); // Optional: Clear the input fields after successful registration
+                   
+                }
+                else
+                {
+                    MessageBox.Show("Registration failed. Please try again.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"An error occurred: {ex.Message}");
+        }
     }
+
+    // Method to clear input fields
+    private void ClearInputFields()
+    {
+            textBox7.Text = string.Empty;
+            textBox9.Text = string.Empty;
+            textBox8.Text = string.Empty;
+            textBox10.Text = string.Empty;
+    }
+
+   
+
+}
 }

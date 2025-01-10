@@ -23,6 +23,7 @@ namespace HMS_GroupProject
             panelMain.Controls.Clear();
             panelMain.Controls.Add(uchome);
             uchome.Dock = DockStyle.Fill;
+            this.BackColor = Color.FromArgb(0x0A, 0x11, 0x28);
 
         }
 
@@ -58,6 +59,21 @@ namespace HMS_GroupProject
             panelMain.Controls.Clear();
             panelMain.Controls.Add(ucbooking);
             ucbooking.Dock = DockStyle.Fill;
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

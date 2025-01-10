@@ -21,8 +21,9 @@ namespace HMS_GroupProject
         {
             InitializeComponent();
             mainForm = form;
+            this.BackColor = Color.FromArgb(0x8B, 0x9F, 0xCA); // Light blue color from your palette
         }
-        private string connectionString = "Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;";
+        private string connectionString = "Data Source=DESKTOP-B392QTM\\SQLEXPRESS;Initial Catalog=Hotel_Managment;Integrated Security=True;";
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -46,6 +47,35 @@ namespace HMS_GroupProject
 
         private void LoginPage_Load(object sender, EventArgs e)
         {
+            // Set the background color to the dark blue
+            this.BackColor = Color.FromArgb(0x1F, 0x38, 0x5C); // Dark blue background for the form
+
+            // Labels (assuming label1, label2, and Login are your labels)
+            label1.ForeColor = Color.White; // White text for labels
+            label2.ForeColor = Color.White; // White text for labels
+            Login.ForeColor = Color.White; // White text for labels
+
+            // Text boxes
+            textBox2.BackColor = Color.White; // White background
+            textBox2.BorderStyle = BorderStyle.FixedSingle; // Single border
+            textBox2.ForeColor = Color.Black; // Text Color
+            textBox1.BackColor = Color.White; // White background
+            textBox1.BorderStyle = BorderStyle.FixedSingle; // Single border
+            textBox1.ForeColor = Color.Black; // Text Color
+
+            // Button
+            button1.BackColor = Color.FromArgb(0x0A, 0x29, 0x4B); // Dark blue background (same as before)
+            button1.ForeColor = Color.White; // White text (same as before)
+            button1.FlatStyle = FlatStyle.Flat; // Flat style (same as before)
+            button1.FlatAppearance.BorderSize = 0; // No border (same as before)
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(0x07, 0x1A, 0x30); // Darker blue on hover (same as before)
+
+            label1.Font = new Font("Segoe UI", 12); // Example font and size
+            label2.Font = new Font("Segoe UI", 12);
+            Login.Font = new Font("Segoe UI", 16, FontStyle.Bold);
+            textBox1.Font = new Font("Segoe UI", 12);
+            textBox2.Font = new Font("Segoe UI", 12);
+            button1.Font = new Font("Segoe UI", 12);
 
         }
 

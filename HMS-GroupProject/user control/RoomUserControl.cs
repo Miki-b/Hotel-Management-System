@@ -16,5 +16,10 @@ namespace HMS_GroupProject.user_control
         {
             InitializeComponent();
         }
+
+        private void RoomUserControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

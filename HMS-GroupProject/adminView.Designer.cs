@@ -47,39 +47,44 @@
             // 
             // panelMain
             // 
-            this.panelMain.Location = new System.Drawing.Point(186, -16);
+            this.panelMain.Location = new System.Drawing.Point(240, 79);
+            this.panelMain.Margin = new System.Windows.Forms.Padding(4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(809, 433);
+            this.panelMain.Size = new System.Drawing.Size(1122, 550);
             this.panelMain.TabIndex = 16;
+            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(174, 0);
+            this.panel1.Location = new System.Drawing.Point(232, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1045, 37);
+            this.panel1.Size = new System.Drawing.Size(1134, 81);
             this.panel1.TabIndex = 14;
             // 
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 4);
-            this.label6.MaximumSize = new System.Drawing.Size(500, 220);
+            this.label6.Location = new System.Drawing.Point(8, 24);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.MaximumSize = new System.Drawing.Size(667, 271);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(130, 30);
+            this.label6.Size = new System.Drawing.Size(173, 37);
             this.label6.TabIndex = 4;
             this.label6.Text = "HMS";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(196, 8);
+            this.textBox1.Location = new System.Drawing.Point(287, 34);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 20);
+            this.textBox1.Size = new System.Drawing.Size(271, 22);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Search here...";
             // 
@@ -87,18 +92,21 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(836, 12);
+            this.label1.Location = new System.Drawing.Point(979, 24);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(88, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "User Name";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(768, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(867, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(62, 37);
+            this.pictureBox1.Size = new System.Drawing.Size(104, 77);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -111,16 +119,18 @@
             this.panel2.Controls.Add(this.homeButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(174, 326);
+            this.panel2.Size = new System.Drawing.Size(232, 633);
             this.panel2.TabIndex = 15;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(28, 210);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Location = new System.Drawing.Point(37, 341);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(78, 38);
+            this.button3.Size = new System.Drawing.Size(144, 57);
             this.button3.TabIndex = 7;
             this.button3.Text = " BOOKING LIST";
             this.button3.UseVisualStyleBackColor = true;
@@ -128,10 +138,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(28, 150);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(37, 237);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 38);
+            this.button2.Size = new System.Drawing.Size(144, 57);
             this.button2.TabIndex = 6;
             this.button2.Text = " GUEST";
             this.button2.UseVisualStyleBackColor = true;
@@ -139,10 +149,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(28, 90);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(37, 128);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 38);
+            this.button1.Size = new System.Drawing.Size(144, 57);
             this.button1.TabIndex = 5;
             this.button1.Text = " ROOM";
             this.button1.UseVisualStyleBackColor = true;
@@ -150,10 +160,10 @@
             // 
             // homeButton
             // 
-            this.homeButton.Location = new System.Drawing.Point(28, 28);
-            this.homeButton.Margin = new System.Windows.Forms.Padding(2);
+            this.homeButton.Location = new System.Drawing.Point(37, 24);
+            this.homeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(78, 38);
+            this.homeButton.Size = new System.Drawing.Size(144, 57);
             this.homeButton.TabIndex = 4;
             this.homeButton.Text = " HOME";
             this.homeButton.UseVisualStyleBackColor = true;
@@ -161,13 +171,14 @@
             // 
             // adminView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "adminView";
-            this.Size = new System.Drawing.Size(1219, 326);
+            this.Size = new System.Drawing.Size(1366, 633);
             this.Load += new System.EventHandler(this.adminView_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

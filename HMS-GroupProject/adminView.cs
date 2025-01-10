@@ -23,7 +23,7 @@ namespace HMS_GroupProject
             panelMain.Controls.Clear();
             panelMain.Controls.Add(uchome);
             uchome.Dock = DockStyle.Fill;
-            this.BackColor = Color.FromArgb(0x0A, 0x11, 0x28);
+             this.BackColor = Color.FromArgb(0x0A, 0x11, 0x28);
 
         }
 

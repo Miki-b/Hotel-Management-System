@@ -208,12 +208,6 @@
     <EmbeddedResource Include="user control\RoomUserControl.resx">
       <DependentUpon>RoomUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="user control\RoomViewUserCo.resx">
-      <DependentUpon>RoomViewUserCo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="user control\Services.resx">
-      <DependentUpon>Services.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

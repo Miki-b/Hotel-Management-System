@@ -8,7 +8,7 @@ namespace HMS_GroupProject
     public partial class Form1 : Form
     {
 
-        private string connectionString = "Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;";
+        //private string connectionString = "Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;";
         public GuestUserControl ucguest = new GuestUserControl();
         //public BookingListUserControl ucbooking = new BookingListUserControl();
         public HomeUserControl uchome = new HomeUserControl();

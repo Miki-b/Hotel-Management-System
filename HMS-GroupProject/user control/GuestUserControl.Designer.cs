@@ -113,6 +113,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 20);
             this.textBox7.TabIndex = 26;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // button1
             // 
@@ -140,6 +141,7 @@
             this.Controls.Add(this.textBox7);
             this.Name = "GuestUserControl";
             this.Size = new System.Drawing.Size(911, 433);
+            this.Load += new System.EventHandler(this.GuestUserControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

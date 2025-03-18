@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,10 +18,12 @@ namespace HMS_GroupProject
 
 
         private Form1 mainForm;
+        private String GuestID;
         public LoginPage(Form1 form)
         {
             InitializeComponent();
             mainForm = form;
+            
             this.BackColor = Color.FromArgb(0x8B, 0x9F, 0xCA); // Light blue color from your palette
         }
         private string connectionString = "Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;";
@@ -47,107 +50,151 @@ namespace HMS_GroupProject
 
         private void LoginPage_Load(object sender, EventArgs e)
         {
-            // Set the background color to the dark blue
-            this.BackColor = Color.FromArgb(0x1F, 0x38, 0x5C); // Dark blue background for the form
+            // Set a bright and modern background color
+            this.BackColor = Color.FromArgb(224, 247, 250); // Light blue tint
 
-            // Labels (assuming label1, label2, and Login are your labels)
-            label1.ForeColor = Color.White; // White text for labels
-            label2.ForeColor = Color.White; // White text for labels
-            Login.ForeColor = Color.White; // White text for labels
+            // Labels Styling
+            label1.ForeColor = Color.FromArgb(21, 82, 135); // Dark blue for better readability
+            label2.ForeColor = Color.FromArgb(21, 82, 135);
+            Login.ForeColor = Color.FromArgb(10, 41, 75);
+            Login.Font = new Font("Segoe UI", 18, FontStyle.Bold);
 
-            // Text boxes
-            textBox2.BackColor = Color.White; // White background
-            textBox2.BorderStyle = BorderStyle.FixedSingle; // Single border
-            textBox2.ForeColor = Color.Black; // Text Color
-            textBox1.BackColor = Color.White; // White background
-            textBox1.BorderStyle = BorderStyle.FixedSingle; // Single border
-            textBox1.ForeColor = Color.Black; // Text Color
+            // Textboxes Styling
+            textBox1.BackColor = Color.White;
+            textBox1.ForeColor = Color.Black;
+            textBox1.Font = new Font("Segoe UI", 14);
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Padding = new Padding(5);
 
-            // Button
-            button1.BackColor = Color.FromArgb(0x0A, 0x29, 0x4B); // Dark blue background (same as before)
-            button1.ForeColor = Color.White; // White text (same as before)
-            button1.FlatStyle = FlatStyle.Flat; // Flat style (same as before)
-            button1.FlatAppearance.BorderSize = 0; // No border (same as before)
-            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(0x07, 0x1A, 0x30); // Darker blue on hover (same as before)
+            textBox2.BackColor = Color.White;
+            textBox2.ForeColor = Color.Black;
+            textBox2.Font = new Font("Segoe UI", 14);
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
+            textBox2.Padding = new Padding(5);
 
-            label1.Font = new Font("Segoe UI", 12); // Example font and size
-            label2.Font = new Font("Segoe UI", 12);
-            Login.Font = new Font("Segoe UI", 16, FontStyle.Bold);
-            textBox1.Font = new Font("Segoe UI", 12);
-            textBox2.Font = new Font("Segoe UI", 12);
-            button1.Font = new Font("Segoe UI", 12);
+            // Buttons Styling
+            button1.BackColor = Color.FromArgb(45, 130, 195); // Vibrant blue
+            button1.ForeColor = Color.White;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            button1.Cursor = Cursors.Hand;
+            button1.Text = "Login";
+            //button1.MouseEnter += (s, e) => button1.BackColor = Color.FromArgb(26, 102, 168);
+            //button1.MouseLeave += (s, e) => button1.BackColor = Color.FromArgb(45, 130, 195);
 
+            // Links Styling
+            linkLabel1.LinkColor = Color.FromArgb(21, 82, 135);
+            linkLabel1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            linkLabel2.LinkColor = Color.FromArgb(21, 82, 135);
+            linkLabel2.Font = new Font("Segoe UI", 12, FontStyle.Bold);
         }
+
 
         private void button1_Click_1(object sender, EventArgs e)
+    {
+        string username = textBox2.Text.Trim();
+        string password = textBox1.Text.Trim();
+
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
-            string username = textBox2.Text.Trim();
-            string password = textBox1.Text.Trim();
-
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Please enter both Username and Password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-
-                    // Query to validate login credentials
-                    string query = "SELECT Role FROM Login WHERE Username = @username AND Password = @password";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@username", username);
-                        cmd.Parameters.AddWithValue("@password", password);
-
-                        object result = cmd.ExecuteScalar();
-                        Console.WriteLine(result);
-
-                        if (result != null)
-                        {
-                            string role = result.ToString();
-                            
-                            // Redirect based on role
-                            switch (role)
-                            {
-                                case "Guest":
-                                    MessageBox.Show("Welcome Guest! Redirecting to Guest Page...", "Login Successful");
-                                    //mainForm.GuestView();
-                                    break;
-                                case "Employee":
-                                    MessageBox.Show("Welcome Employee! Redirecting to Employee Page...", "Login Successful");
-                                    //mainForm.ShowDashboard();
-                                    // Open Employee page here
-                                    break;
-                                case "Admin":
-                                    MessageBox.Show("Welcome Admin! Redirecting to Admin Page...", "Login Successful");
-                                    //mainForm.ShowDashboard();
-                                    mainForm.adminView();
-                                    // Open Admin page here
-                                    break;
-                                default:
-                                    MessageBox.Show("Invalid role assigned to the user.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid Username or Password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while logging in: {ex.Message}", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            MessageBox.Show("Please enter both Username and Password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        try
+        {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        conn.Open();
+
+                        // Query to join Login table with Guest and Employee tables
+                        string query = @"SELECT Password, Role, Guest_ID, Employee_ID FROM Login WHERE Username = @username";
+
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@username", username);
+
+                            using (SqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    string storedHash = reader["Password"].ToString();
+                                    string role = reader["Role"].ToString();
+                                    int? guestId = reader["Guest_ID"] != DBNull.Value ? Convert.ToInt32(reader["Guest_ID"]) : (int?)null;
+                                    int? employeeId = reader["Employee_ID"] != DBNull.Value ? Convert.ToInt32(reader["Employee_ID"]) : (int?)null;
+
+                                    // Verify the entered password using BCrypt
+                                    bool isValid = BCrypt.Net.BCrypt.Verify(password, storedHash);
+
+                                    if (isValid)
+                                    {
+                                        // Redirect user based on their role
+                                        switch (role)
+                                        {
+                                            case "Guest":
+                                                if (guestId.HasValue)
+                                                {
+                                                    MessageBox.Show($"Welcome Guest ! Redirecting to Guest Page...", "Login Successful");
+                                                    mainForm.GuestView(role, guestId.Value); // Pass guest details
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Guest ID not found for this user.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                }
+                                                break;
+
+                                            case "Employee":
+                                                if (employeeId.HasValue)
+                                                {
+                                                    MessageBox.Show($"Welcome Employee Redirecting to Employee Page...", "Login Successful");
+                                                    mainForm.adminView(role, employeeId.Value); // Pass employee details
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Employee ID not found for this user.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                }
+                                                break;
+
+                                            case "Admin":
+                                                MessageBox.Show("Welcome Admin! Redirecting to Admin Page...", "Login Successful");
+                                                mainForm.adminView(role, employeeId.Value);
+                                                break;
+
+                                            default:
+                                                MessageBox.Show("Invalid role assigned to the user.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                break;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Invalid Username or Password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid Username or Password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred while logging in: {ex.Message}", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+        {
+            MessageBox.Show($"An error occurred while logging in: {ex.Message}", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+
+
+    private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -155,6 +202,29 @@ namespace HMS_GroupProject
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs eArgs)
+        {
+            mainForm.ShowGuestRegPage();
+
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs eArgs)
+        {
+            mainForm.ShowAdminRegPage();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                textBox1.PasswordChar = '\0'; // Removes password masking
+            }
+            else
+            {
+                textBox1.PasswordChar = '*'; // Masks password
+            }
         }
     }
 }

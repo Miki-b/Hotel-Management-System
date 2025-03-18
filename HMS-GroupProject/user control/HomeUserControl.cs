@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HMS_GroupProject.user_control
@@ -14,58 +9,88 @@ namespace HMS_GroupProject.user_control
     public partial class HomeUserControl : UserControl
     {
         private string connectionString;
-        public HomeUserControl(string conn)
+        int GuestId;
+        string Role;
+        private TableLayoutPanel tableLayout;
+
+        public HomeUserControl(string conn, int GuestId, string Role)
         {
-            InitializeComponent(); // Ensure controls are initialized first
-            connectionString = conn; // Set the connection string
-            UpdateDashboardData(); // Then update the dashboard
-            LoadFilteredBookings(dataGridView1); // Finally load filtered bookings
+            InitializeComponent();
+            connectionString = conn;
+            this.GuestId = GuestId;
+            this.Role = Role;
+            this.AutoScroll = true;
+            //this.AutoSize = true;   
+            InitializeDashboardControls();
+            UpdateDashboardData();
+            LoadFilteredBookings();
+            LoadGuestRequests();
         }
 
-        public void LoadFilteredBookings(DataGridView dataGridView)
+        private void InitializeDashboardControls()
         {
-            try
+            tableLayout = new TableLayoutPanel
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    // Define the command to execute the stored procedure
-                    SqlCommand cmd = new SqlCommand("GetAllBookingsWithInvoices", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                Dock = DockStyle.Fill,
+                ColumnCount = 1,
+                RowCount = 8,
+                AutoSize = true
+            };
+            
+            tableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            tableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            tableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            tableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            tableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            tableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            tableLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
+            tableLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
 
-                    // Open connection
-                    conn.Open();
+            labelRecentBookings = CreateLabel("Recent Bookings:");
+            labelAvailableRooms = CreateLabel("Available Rooms:");
+            labelTotalRevenue = CreateLabel("Total Revenue:");
+            labelGuestCount = CreateLabel("Total Guests:");
+            labelEmployeeCount = CreateLabel("Total Employees:");
+            labelGuestRequests = CreateLabel("Pending Guest Requests:");
 
-                    // Execute the stored procedure and fill a DataTable
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+            dataGridViewBookings = CreateDataGridView();
+            dataGridViewRequests = CreateDataGridView();
 
-                    // Create a new filtered DataTable for the desired columns
-                    DataTable filteredTable = dataTable.DefaultView.ToTable(false,
-                        "Room_Type", "Check_in_Date", "Check_out_Date", "Total_amount");
+            tableLayout.Controls.Add(labelRecentBookings, 0, 0);
+            tableLayout.Controls.Add(labelAvailableRooms, 0, 1);
+            tableLayout.Controls.Add(labelTotalRevenue, 0, 2);
+            tableLayout.Controls.Add(labelGuestCount, 0, 3);
+            tableLayout.Controls.Add(labelEmployeeCount, 0, 4);
+            tableLayout.Controls.Add(labelGuestRequests, 0, 5);
+            tableLayout.Controls.Add(dataGridViewBookings, 0, 6);
+            tableLayout.Controls.Add(dataGridViewRequests, 0, 7);
 
-                    // Add a calculated column for duration
-                    filteredTable.Columns.Add("Duration", typeof(int));
-                    foreach (DataRow row in filteredTable.Rows)
-                    {
-                        DateTime checkIn = Convert.ToDateTime(row["Check_in_Date"]);
-                        DateTime checkOut = Convert.ToDateTime(row["Check_out_Date"]);
-                        row["Duration"] = (checkOut - checkIn).Days;
-                    }
-
-                    // Bind the filtered table to the DataGridView
-                    dataGridView.DataSource = filteredTable;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading bookings: " + ex.Message);
-            }
+            Controls.Add(tableLayout);
+            tableLayout.AutoScroll = true;
+            tableLayout.AutoSize = true;
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private Label CreateLabel(string text)
         {
-
+            return new Label
+            {
+                Text = text,
+                AutoSize = true,
+                Font = new Font("Arial", 10, FontStyle.Bold),
+                Padding = new Padding(5)
+            };
         }
+
+        private DataGridView CreateDataGridView()
+        {
+            return new DataGridView
+            {
+                Dock = DockStyle.Fill,
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                ReadOnly = true
+            };
+        }
+
         private void UpdateDashboardData()
         {
             try
@@ -74,36 +99,103 @@ namespace HMS_GroupProject.user_control
                 {
                     connection.Open();
 
-                    
-                    string queryNewBooking = "SELECT COUNT(*) FROM Booking WHERE Room_Status = 'New'";
-                    SqlCommand cmdNewBooking = new SqlCommand(queryNewBooking, connection);
-                    int newBookingCount = (int)cmdNewBooking.ExecuteScalar();
-                    label11.Text = newBookingCount.ToString();
-
-                    // Available Rooms
-                    string queryAvailableRooms = "SELECT COUNT(*) AS AvailableRoomCount\r\nFROM Room\r\nWHERE Status = 'Available';\r\n";
-                    SqlCommand cmdAvailableRooms = new SqlCommand(queryAvailableRooms, connection);
-                    int availableRoomsCount = (int)cmdAvailableRooms.ExecuteScalar();
-                    label12.Text = availableRoomsCount.ToString();
-
-                    // Check-In Today
-                    //string queryCheckIn = "SELECT COUNT(*) FROM Booking WHERE CAST(Check_In_Date AS DATE) = CAST(GETDATE() AS DATE)";
-                    //SqlCommand cmdCheckIn = new SqlCommand(queryCheckIn, connection);
-                    //int checkInCount = (int)cmdCheckIn.ExecuteScalar();
-                    //lblCheckIn.Text = checkInCount.ToString();
-
-                    // Check-Out Today
-                    //string queryCheckOut = "SELECT COUNT(*) FROM Booking WHERE CAST(Check_Out_Date AS DATE) = CAST(GETDATE() AS DATE)";
-                    //SqlCommand cmdCheckOut = new SqlCommand(queryCheckOut, connection);
-                    //int checkOutCount = (int)cmdCheckOut.ExecuteScalar();
-                    //lblCheckOut.Text = checkOutCount.ToString();
+                    labelRecentBookings.Text = $"Recent Bookings: {ExecuteScalarQuery("SELECT COUNT(*) FROM Reservations WHERE Check_in_Date >= DATEADD(DAY, -7, GETDATE());", connection)}";
+                    labelAvailableRooms.Text = $"Available Rooms: {ExecuteScalarQuery("SELECT COUNT(*) FROM Room WHERE Status = 'Available';", connection)}";
+                    labelTotalRevenue.Text = $"Total Revenue: ${ExecuteScalarQuery("SELECT SUM(Amount) FROM Invoice;", connection)}";
+                    labelGuestCount.Text = $"Total Guests: {ExecuteScalarQuery("SELECT COUNT(*) FROM Guest;", connection)}";
+                    labelEmployeeCount.Text = $"Total Employees: {ExecuteScalarQuery("SELECT COUNT(*) FROM Employee;", connection)}";
+                    labelGuestRequests.Text = $"Pending Guest Requests: {ExecuteScalarQuery("SELECT COUNT(*) FROM GuestServiceRequests;", connection)}";
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error updating dashboard data: " + ex.Message);
+                MessageBox.Show("Error updating dashboard: " + ex.Message);
             }
         }
 
+        private void LoadFilteredBookings()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    // Define SQL query
+                    string query = @"
+        SELECT 
+            r.Reservation_ID,
+            r.Guest_ID,
+            g.Name AS Guest_Name,
+            r.Room_ID,
+            rm.Room_Type,
+            r.Check_in_Date,
+            r.Check_out_Date,
+            i.Amount
+            
+            
+        FROM Reservations r
+        INNER JOIN Guest g ON r.Guest_ID = g.Guest_ID
+        INNER JOIN Room rm ON r.Room_ID = rm.Room_ID
+        LEFT JOIN Invoice i ON r.Reservation_ID = i.Reservation_ID
+        ORDER BY r.Check_in_Date DESC;"; // Show recent bookings first
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Guest_ID", GuestId);
+                        cmd.Parameters.AddWithValue("@Role", Role);
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        dataGridViewBookings.DataSource = dataTable;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading bookings: " + ex.Message);
+            }
+        }
+
+        private void LoadGuestRequests()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "SELECT Request_ID, Guest_ID, Service_Type, Category, Request_Details, Urgency FROM GuestServiceRequests";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dataGridViewRequests.DataSource = dataTable;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading guest requests: " + ex.Message);
+            }
+        }
+
+        private int ExecuteScalarQuery(string query, SqlConnection connection)
+        {
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                object result = cmd.ExecuteScalar();
+                return result != DBNull.Value ? Convert.ToInt32(result) : 0;
+            }
+        }
+
+        private Label labelTotalRevenue;
+        private Label labelGuestCount;
+        private Label labelEmployeeCount;
+        private Label labelGuestRequests;
+        private DataGridView dataGridViewRequests;
+        private DataGridView dataGridViewBookings;
+        private Label labelRecentBookings;
+        private Label labelAvailableRooms;
     }
 }

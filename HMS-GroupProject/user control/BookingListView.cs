@@ -8,13 +8,18 @@ namespace HMS_GroupProject.user_control
     public partial class BookingListView : UserControl
     {
         private string connectionString;
+        int GuestID;
+        string Role;
 
-        public BookingListView(string Connect)
+        public BookingListView(string Connect,int GuestID,string Role)
         {
             connectionString = Connect;
             InitializeComponent();
+            this.GuestID = GuestID;
+            this.Role = Role;
             LoadFilteredBookings(dataGridView2);
-            dataGridView2.CellClick += DataGridView2_CellClick; // Attach the event handler
+            dataGridView2.CellClick += DataGridView2_CellClick;
+            Console.WriteLine("Role");// Attach the event handler
         }
 
         public void LoadFilteredBookings(DataGridView dataGridView)
@@ -26,6 +31,10 @@ namespace HMS_GroupProject.user_control
                     // Define the command to execute the stored procedure
                     SqlCommand cmd = new SqlCommand("GetAllBookingsWithInvoices", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
+                    Console.WriteLine("Role");
+                    // Add parameters for Guest_ID and Role
+                    cmd.Parameters.AddWithValue("@Guest_ID", GuestID); // Assume guestId is obtained from the user
+                    cmd.Parameters.AddWithValue("@Role", Role);    // Assume userRole is defined elsewhere
 
                     // Open connection
                     conn.Open();
@@ -51,6 +60,7 @@ namespace HMS_GroupProject.user_control
                     // Bind the filtered table to the DataGridView
                     dataGridView.DataSource = filteredTable;
                 }
+
             }
             catch (Exception ex)
             {
@@ -82,7 +92,8 @@ namespace HMS_GroupProject.user_control
                     {
                         SqlCommand cmd = new SqlCommand("GetAllBookingsWithInvoices", conn);
                         cmd.CommandType = CommandType.StoredProcedure;
-
+                        cmd.Parameters.AddWithValue("@Guest_ID", GuestID); // Assume guestId is obtained from the user
+                        cmd.Parameters.AddWithValue("@Role", Role);
                         // Open connection
                         conn.Open();
 

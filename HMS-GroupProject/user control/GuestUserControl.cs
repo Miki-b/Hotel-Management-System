@@ -14,10 +14,12 @@ namespace HMS_GroupProject
 {
     public partial class GuestUserControl : UserControl
     {
+        Form1 main;
         public GuestUserControl()
         {
             InitializeComponent();
             StyleGuestControl();
+            
         }
 
         private void StyleGuestControl()
@@ -108,7 +110,7 @@ private void button1_Click(object sender, EventArgs e)
 
         try
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-2RI98PE\\SQLEXPRESS;Initial Catalog=Hotel_Managment;Integrated Security=True;Encrypt=False"))
+            using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-A3UB2QO\\MSSQLSERVER2022;Initial Catalog=HotelManagementDB;Integrated Security=True;Encrypt=False;"))
             {
                 SqlCommand command = new SqlCommand(query, connection);
 
@@ -124,9 +126,14 @@ private void button1_Click(object sender, EventArgs e)
                 if (rowsAffected > 0)
                 {
                     MessageBox.Show("Guest registered successfully!");
-                    ClearInputFields(); // Optional: Clear the input fields after successful registration
-                   
-                }
+                    ClearInputFields();
+                        // Optional: Clear the input fields after successful registration
+                        LoginPage loginPage = new LoginPage(this.main);
+                        //adminView view1 = new adminView();
+                        this.Controls.Add(loginPage);
+                        loginPage.Visible = true;
+                        loginPage.Dock = DockStyle.Fill;
+                    }
                 else
                 {
                     MessageBox.Show("Registration failed. Please try again.");
@@ -148,7 +155,14 @@ private void button1_Click(object sender, EventArgs e)
             textBox10.Text = string.Empty;
     }
 
-   
+        private void GuestUserControl_Load(object sender, EventArgs e)
+        {
 
-}
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.Licensing.6.0.4\lib\net472\Bunifu.Licensing.dll</HintPath>
     </Reference>
@@ -107,6 +110,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminReg.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminReg.Designer.cs">
+      <DependentUpon>AdminReg.cs</DependentUpon>
+    </Compile>
     <Compile Include="adminView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +129,36 @@
     <Compile Include="BookingView.Designer.cs">
       <DependentUpon>BookingView.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmployeeList.Designer.cs">
+      <DependentUpon>EmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeReg.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmployeeReg.Designer.cs">
+      <DependentUpon>EmployeeReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GuestBookingList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GuestBookingList.Designer.cs">
+      <DependentUpon>GuestBookingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GuestHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GuestHome.Designer.cs">
+      <DependentUpon>GuestHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GuestServiceRequest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GuestServiceRequest.Designer.cs">
+      <DependentUpon>GuestServiceRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="GuestView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -131,6 +170,18 @@
     </Compile>
     <Compile Include="LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoomDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RoomDetails.Designer.cs">
+      <DependentUpon>RoomDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoomView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RoomView.Designer.cs">
+      <DependentUpon>RoomView.cs</DependentUpon>
     </Compile>
     <Compile Include="user control\BookingListUserControl.cs">
       <SubType>UserControl</SubType>
@@ -176,11 +227,35 @@
     <Compile Include="user control\RoomUserControl.Designer.cs">
       <DependentUpon>RoomUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="GuestList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GuestList.Designer.cs">
+      <DependentUpon>GuestList.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminReg.resx">
+      <DependentUpon>AdminReg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="adminView.resx">
       <DependentUpon>adminView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BookingView.resx">
       <DependentUpon>BookingView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeList.resx">
+      <DependentUpon>EmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeReg.resx">
+      <DependentUpon>EmployeeReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuestBookingList.resx">
+      <DependentUpon>GuestBookingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuestHome.resx">
+      <DependentUpon>GuestHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuestServiceRequest.resx">
+      <DependentUpon>GuestServiceRequest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GuestView.resx">
       <DependentUpon>GuestView.cs</DependentUpon>
@@ -188,12 +263,21 @@
     <EmbeddedResource Include="LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RoomDetails.resx">
+      <DependentUpon>RoomDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoomView.resx">
+      <DependentUpon>RoomView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="user control\BookingListUserControl.resx">
       <DependentUpon>BookingListUserControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user control\BookingListView.resx">
+      <DependentUpon>BookingListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="user control\GuestRegUserCo.resx">
       <DependentUpon>GuestRegUserCo.cs</DependentUpon>
@@ -216,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="user control\RoomUserControl.resx">
       <DependentUpon>RoomUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuestList.resx">
+      <DependentUpon>GuestList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
